@@ -1,0 +1,6 @@
+fragment PageCommonBase on Page {
+	id
+	databaseId
+	title
+	slug
+}

@@ -1,0 +1,6 @@
+overwrite: true
+schema: ${VITE_API_URL}
+generates:
+  ./src/lib/api/graphql/schema.json:
+    plugins:
+      - "introspection"

@@ -1,0 +1,53 @@
+mutation RegisterUser($input: RegisterUserInput!) {
+	registerUser(input: $input) {
+		user {
+			...UserAuthBase
+		}
+	}
+}
+
+mutation LoginUser($input: LoginInput!) {
+	login(input: $input) {
+		user {
+			...UserAuthBase
+		}
+	}
+}
+
+mutation LoginUserWithCookies($cookiesInput: LoginWithCookiesInput!, $jwtInput: LoginInput!) {
+	loginWithCookies(input: $cookiesInput) {
+		status
+	}
+	login(input: $jwtInput) {
+		user {
+			...UserAuthBase
+		}
+	}
+}
+
+mutation LogoutUser($input: LogoutInput!) {
+	logout(input: $input) {
+		status
+	}
+}
+
+mutation RefreshAuthToken($input: RefreshJwtAuthTokenInput!) {
+	refreshJwtAuthToken(input: $input) {
+		authToken
+	}
+}
+
+mutation ResetUserPassword($key: String!, $login: String!, $password: String!) {
+	resetUserPassword(input: { key: $key, login: $login, password: $password }) {
+		clientMutationId
+		user {
+			...UserAuthBase
+		}
+	}
+}
+
+mutation SendPasswordResetEmail($username: String!) {
+	sendPasswordResetEmail(input: { username: $username }) {
+		clientMutationId
+	}
+}

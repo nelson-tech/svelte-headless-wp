@@ -1,0 +1,12 @@
+fragment ImageBase on MediaItem {
+	id
+	databaseId
+	altText
+	sourceUrl
+	mimeType
+	mediaDetails {
+		height
+		width
+	}
+	fileSize
+}

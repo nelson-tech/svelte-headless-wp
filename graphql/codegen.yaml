@@ -1,0 +1,15 @@
+overwrite: true
+schema: "./src/lib/api/graphql/schema.json"
+documents: "./**/*.(gql|graphql)"
+generates:
+  ./src/lib/api/graphql/types.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typed-document-node
+      - typescript-document-nodes
+  ./src/lib/api/graphql/stores.ts:
+    plugins:
+      - "@kitql/graphql-codegen"
+config:
+  importBaseTypesFrom: ./types

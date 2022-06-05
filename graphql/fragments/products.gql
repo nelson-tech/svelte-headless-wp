@@ -1,0 +1,160 @@
+fragment ProductMinBase on Product {
+	id
+	databaseId
+	name
+	slug
+	type
+}
+
+fragment ProductPriceBase on VariableProduct {
+	price
+	salePrice
+	onSale
+}
+
+fragment ProductBase on Product {
+	...ProductMinBase
+	metaData(keysIn: "_product_addons") {
+		key
+		value
+	}
+	dateOnSaleFrom
+	dateOnSaleTo
+	description
+	shortDescription
+	productCategories {
+		nodes {
+			name
+			slug
+			ancestors {
+				nodes {
+					name
+					slug
+				}
+			}
+		}
+	}
+	image {
+		...ImageBase
+	}
+	galleryImages {
+		nodes {
+			...ImageBase
+		}
+	}
+}
+
+fragment SimpleProductFragment on SimpleProduct {
+	... on SimpleProduct {
+		...ProductBase
+		price
+		salePrice
+		onSale
+	}
+}
+
+fragment VariationAttributeBase on VariationAttribute {
+	id
+	attributeId
+	name
+	label
+}
+
+fragment ProductAttributeBase on ProductAttribute {
+	id
+	attributeId
+	name
+	label
+}
+
+fragment ProductVariationBase on ProductVariation {
+	sku
+	id
+	databaseId
+	description
+	name
+	price
+	salePrice
+	onSale
+	dateOnSaleFrom
+	dateOnSaleTo
+	image {
+		...ImageBase
+	}
+	attributes {
+		nodes {
+			...VariationAttributeBase
+		}
+	}
+}
+
+fragment VariableProductFragment on VariableProduct {
+	... on VariableProduct {
+		...ProductBase
+		price
+		salePrice
+		onSale
+		variations {
+			nodes {
+				...ProductVariationBase
+			}
+		}
+		attributes {
+			nodes {
+				...ProductAttributeBase
+			}
+		}
+	}
+}
+
+fragment ProductCategoryBase on ProductCategory {
+	name
+	slug
+	id
+	count
+	description
+	image {
+		...ImageBase
+	}
+	# product_category {
+	# 	acf {
+	# 		description
+	# 	}
+	# }
+}
+
+fragment CartBase on Cart {
+	contentsTotal
+	isEmpty
+	subtotal
+	total
+	contents {
+		itemCount
+		productCount
+		nodes {
+			quantity
+			subtotal
+			total
+			variation {
+				attributes {
+					...VariationAttributeBase
+					value
+				}
+			}
+			key
+			product {
+				node {
+					...ProductMinBase
+					image {
+						...ImageBase
+					}
+					productCategories {
+						nodes {
+							slug
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,45 @@
+mutation AddToCart($input: AddToCartInput!) {
+	addToCart(input: $input) {
+		cart {
+			isEmpty
+			contents {
+				itemCount
+				productCount
+				edges {
+					node {
+						extraData {
+							key
+							value
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+mutation ClearCart($input: EmptyCartInput!) {
+	emptyCart(input: $input) {
+		clientMutationId
+		cart {
+			...CartBase
+		}
+	}
+}
+
+mutation RemoveCartItem($input: RemoveItemsFromCartInput!) {
+	removeItemsFromCart(input: $input) {
+		clientMutationId
+		cart {
+			...CartBase
+		}
+	}
+}
+
+mutation UpdateCartItemQuantity($input: UpdateItemQuantitiesInput!) {
+	updateItemQuantities(input: $input) {
+		cart {
+			...CartBase
+		}
+	}
+}

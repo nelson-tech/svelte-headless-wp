@@ -1,0 +1,10 @@
+query GetUser {
+	customer {
+		id
+		databaseId
+		firstName
+		lastName
+		username
+		email
+	}
+}
