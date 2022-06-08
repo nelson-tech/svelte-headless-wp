@@ -13,7 +13,7 @@ const setCookies = async (res: Response) => {
 		maxAge: 2592000,
 		httpOnly: true,
 		secure: !dev,
-		path: "/api",
+		path: "/",
 	}
 
 	// Cart session
@@ -25,7 +25,6 @@ const setCookies = async (res: Response) => {
 	}
 
 	if (cookies.length > 0) {
-		console.log("COOKIES", cookies)
 		res.headers.set("set-cookie", String(cookies))
 	}
 

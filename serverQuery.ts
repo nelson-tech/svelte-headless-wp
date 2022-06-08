@@ -4,15 +4,27 @@ import type { Subscriber, Unsubscriber } from "svelte/store"
 
 type ServerQueryInputType = {
 	store: {
-		subscribe: (this: void, run: Subscriber<any>, invalidate?: any) => Unsubscriber
+		subscribe: (
+			this: void,
+			run: Subscriber<any>,
+			invalidate?: any
+		) => Unsubscriber
 		query: (params?: RequestQueryParameters<any> | undefined) => Promise<any>
-		queryLoad: (params?: RequestQueryParameters<any> | undefined) => Promise<any>
-		resetCache(variables?: any, allOperationKey?: boolean, withResetStore?: boolean): void
+		queryLoad: (
+			params?: RequestQueryParameters<any> | undefined
+		) => Promise<any>
+		resetCache(
+			variables?: any,
+			allOperationKey?: boolean,
+			withResetStore?: boolean
+		): void
 		patch(data: any, variables?: any, type?: any): void
 	}
 	variables?: any
 }
-type ServerQueryType = (input: ServerQueryInputType | ServerQueryInputType[]) => Load
+type ServerQueryType = (
+	input: ServerQueryInputType | ServerQueryInputType[]
+) => Load
 
 /**
  * Accepts either an object with store and variables, or an array of objects.
@@ -21,8 +33,6 @@ type ServerQueryType = (input: ServerQueryInputType | ServerQueryInputType[]) =>
  */
 const serverQuery: ServerQueryType = (input) => {
 	const load: Load = async ({ fetch, stuff, session }) => {
-		console.log("SESSION", session)
-
 		if (Array.isArray(input)) {
 			const queries = input.map(async (item) => {
 				const { store, variables } = item

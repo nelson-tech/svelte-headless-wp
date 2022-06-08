@@ -1,3 +1,4 @@
+import { dev } from "$app/env"
 import { KitQLClient } from "@kitql/client"
 
 export type AppHeaders = {
@@ -6,7 +7,7 @@ export type AppHeaders = {
 }
 
 export const kitQLClient = new KitQLClient<AppHeaders>({
-	url: "/api/graphql",
+	url: false ? "/api/graphql" : import.meta.env.VITE_API_URL,
 	credentials: "include",
 	headersContentType: "application/json",
 	// logType: ["client", "server", "operationAndvariables"],

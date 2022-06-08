@@ -14,14 +14,9 @@ mutation LoginUser($input: LoginInput!) {
 	}
 }
 
-mutation LoginUserWithCookies($cookiesInput: LoginWithCookiesInput!, $jwtInput: LoginInput!) {
+mutation LoginUserWithCookies($cookiesInput: LoginWithCookiesInput!) {
 	loginWithCookies(input: $cookiesInput) {
 		status
-	}
-	login(input: $jwtInput) {
-		user {
-			...UserAuthBase
-		}
 	}
 }
 
