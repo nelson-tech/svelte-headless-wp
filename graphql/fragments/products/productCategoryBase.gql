@@ -1,0 +1,15 @@
+fragment ProductCategoryBase on ProductCategory {
+	name
+	slug
+	id
+	count
+	description
+	image {
+		...ImageBase
+	}
+	# product_category {
+	# 	acf {
+	# 		description
+	# 	}
+	# }
+}

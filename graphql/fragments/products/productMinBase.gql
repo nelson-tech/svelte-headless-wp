@@ -1,0 +1,7 @@
+fragment ProductMinBase on Product {
+	id
+	databaseId
+	name
+	slug
+	type
+}

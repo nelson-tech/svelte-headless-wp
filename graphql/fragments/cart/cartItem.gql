@@ -1,0 +1,25 @@
+fragment CartItem on CartItem {
+	quantity
+	subtotal
+	total
+	variation {
+		attributes {
+			...VariationAttributeBase
+			value
+		}
+	}
+	key
+	product {
+		node {
+			...ProductMinBase
+			image {
+				...ImageBase
+			}
+			productCategories {
+				nodes {
+					slug
+				}
+			}
+		}
+	}
+}

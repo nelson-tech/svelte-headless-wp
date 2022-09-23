@@ -1,0 +1,26 @@
+query GetProductDataFromSlug($id: ID!) {
+	product(id: $id, idType: SLUG) {
+		... on VariableProduct {
+			...ProductBase
+			price
+			salePrice
+			onSale
+			variations {
+				nodes {
+					...ProductVariationBase
+				}
+			}
+			attributes {
+				nodes {
+					...ProductAttributeBase
+				}
+			}
+		}
+		... on SimpleProduct {
+			...ProductBase
+			price
+			salePrice
+			onSale
+		}
+	}
+}

@@ -1,0 +1,25 @@
+query GetAllProducts {
+	products(first: 100) {
+		nodes {
+			...ProductMinBase
+			image {
+				...ImageBase
+			}
+			productCategories {
+				nodes {
+					id
+					slug
+					name
+				}
+			}
+			...ProductPriceBase
+			shortDescription
+		}
+		pageInfo {
+			hasNextPage
+			hasPreviousPage
+			startCursor
+			endCursor
+		}
+	}
+}

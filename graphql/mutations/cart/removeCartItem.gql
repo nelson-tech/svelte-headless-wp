@@ -1,0 +1,8 @@
+mutation RemoveCartItem($input: RemoveItemsFromCartInput!) {
+	removeItemsFromCart(input: $input) {
+		clientMutationId
+		cart {
+			...CartBase
+		}
+	}
+}

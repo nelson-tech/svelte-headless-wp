@@ -1,0 +1,5 @@
+mutation RefreshAuthToken($input: RefreshJwtAuthTokenInput!) {
+	refreshJwtAuthToken(input: $input) {
+		authToken
+	}
+}

@@ -1,0 +1,5 @@
+mutation LoginUserWithCookies($cookiesInput: LoginWithCookiesInput!) {
+	loginWithCookies(input: $cookiesInput) {
+		status
+	}
+}

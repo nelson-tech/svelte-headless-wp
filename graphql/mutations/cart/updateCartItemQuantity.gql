@@ -1,0 +1,7 @@
+mutation UpdateCartItemQuantity($input: UpdateItemQuantitiesInput!) {
+	updateItemQuantities(input: $input) {
+		cart {
+			...CartBase
+		}
+	}
+}

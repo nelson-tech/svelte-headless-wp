@@ -1,0 +1,18 @@
+fragment VariableProductFragment on VariableProduct {
+	... on VariableProduct {
+		...ProductBase
+		price
+		salePrice
+		onSale
+		variations {
+			nodes {
+				...ProductVariationBase
+			}
+		}
+		attributes {
+			nodes {
+				...ProductAttributeBase
+			}
+		}
+	}
+}

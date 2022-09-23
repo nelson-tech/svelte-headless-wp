@@ -1,0 +1,7 @@
+query GetCategorySlugs {
+	productCategories(first: 200) {
+		nodes {
+			slug
+		}
+	}
+}

@@ -1,0 +1,8 @@
+mutation ClearCart($input: EmptyCartInput!) {
+	emptyCart(input: $input) {
+		clientMutationId
+		cart {
+			...CartBase
+		}
+	}
+}

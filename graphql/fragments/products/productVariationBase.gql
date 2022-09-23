@@ -1,0 +1,20 @@
+fragment ProductVariationBase on ProductVariation {
+	sku
+	id
+	databaseId
+	description
+	name
+	price
+	salePrice
+	onSale
+	dateOnSaleFrom
+	dateOnSaleTo
+	image {
+		...ImageBase
+	}
+	attributes {
+		nodes {
+			...VariationAttributeBase
+		}
+	}
+}

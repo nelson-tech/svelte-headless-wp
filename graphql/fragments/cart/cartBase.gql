@@ -1,0 +1,13 @@
+fragment CartBase on Cart {
+	contentsTotal
+	isEmpty
+	subtotal
+	total
+	contents {
+		itemCount
+		productCount
+		nodes {
+			...CartItem
+		}
+	}
+}

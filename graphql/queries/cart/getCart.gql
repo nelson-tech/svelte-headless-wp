@@ -1,0 +1,13 @@
+query GetCart {
+	cart {
+		...CartBase
+		discountTotal
+		discountTax
+		appliedCoupons {
+			code
+			description
+		}
+		totalTax
+		shippingTotal
+	}
+}

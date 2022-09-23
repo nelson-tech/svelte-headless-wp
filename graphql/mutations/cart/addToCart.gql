@@ -1,0 +1,19 @@
+mutation AddToCart($input: AddToCartInput!) {
+	addToCart(input: $input) {
+		cart {
+			isEmpty
+			contents {
+				itemCount
+				productCount
+				edges {
+					node {
+						extraData {
+							key
+							value
+						}
+					}
+				}
+			}
+		}
+	}
+}

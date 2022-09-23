@@ -1,0 +1,22 @@
+query GetProductCategories {
+	productCategories(where: { hideEmpty: true }, first: 99) {
+		nodes {
+			...ProductCategoryBase
+			ancestors {
+				nodes {
+					...ProductCategoryBase
+				}
+			}
+			children(where: { hideEmpty: true }, first: 99) {
+				nodes {
+					...ProductCategoryBase
+					children(where: { hideEmpty: true }, first: 99) {
+						nodes {
+							...ProductCategoryBase
+						}
+					}
+				}
+			}
+		}
+	}
+}

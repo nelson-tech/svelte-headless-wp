@@ -1,0 +1,43 @@
+query GetCategoryFromSlug($id: ID!) {
+	productCategory(id: $id, idType: SLUG) {
+		...ProductCategoryBase
+		ancestors {
+			nodes {
+				id
+				databaseId
+				name
+				slug
+			}
+		}
+		children(where: { hideEmpty: false }) {
+			nodes {
+				...ProductCategoryBase
+				products {
+					nodes {
+						...ProductMinBase
+					}
+				}
+				children(where: { hideEmpty: true }) {
+					nodes {
+						...ProductCategoryBase
+						products {
+							nodes {
+								...ProductMinBase
+							}
+						}
+					}
+				}
+			}
+		}
+		products {
+			nodes {
+				...ProductMinBase
+				image {
+					...ImageBase
+				}
+				...ProductPriceBase
+				shortDescription
+			}
+		}
+	}
+}

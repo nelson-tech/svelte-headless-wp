@@ -5,16 +5,28 @@ import setCookies from "./setCookies"
 const proxy: RequestHandler = async (event) => {
 	const { request } = event
 
-	const res = await fetch(import.meta.env.VITE_API_URL, {
+	const url = import.meta.env.VITE_API_URL
+	const { headers, newToken, shouldLogout } = buildHeaders(request.headers)
+	const body = await request.text()
+
+	// let res: any = new Response(JSON.stringify({ empty: true }), {
+	// 	headers: { "content-type": "application/json" },
+	// })
+
+	const res = await fetch(url, {
 		method: "POST",
 		credentials: "include",
-		headers: buildHeaders(request.headers),
-		body: await request.text(),
+		headers,
+		body,
+	}).catch((error) => {
+		console.log("INDEX FETCH", error)
+		return new Response("")
 	})
 
 	// Set cookies before returning
+	const response = setCookies(res, newToken, shouldLogout)
 
-	return await setCookies(res)
+	return response
 }
 
 export default proxy

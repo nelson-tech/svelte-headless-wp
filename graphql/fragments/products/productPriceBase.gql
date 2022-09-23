@@ -1,0 +1,19 @@
+fragment ProductPriceBase on Product {
+	... on VariableProduct {
+		price
+		salePrice
+	}
+	... on SimpleProduct {
+		price
+		salePrice
+	}
+
+	... on GroupProduct {
+		price
+	}
+	... on ExternalProduct {
+		price
+		salePrice
+	}
+	onSale
+}

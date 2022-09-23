@@ -1,0 +1,10 @@
+query GetCurrentUser {
+	viewer {
+		id
+		databaseId
+		firstName
+		lastName
+		username
+		email
+	}
+}
